@@ -1,6 +1,6 @@
 package testdriven.byexample;
 
-public class Money {
+public class Money implements Expression{
 
 	protected int amount;
 	protected String currency;
@@ -33,6 +33,10 @@ public class Money {
 		Money money = (Money) object;
 		return amount == money.amount
 				&& currency.equals(money.currency);
+	}
+
+	public Expression plus(Money addend) {
+		return new Sum(this, addend);
 	}
 
 }
