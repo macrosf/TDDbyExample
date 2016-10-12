@@ -65,7 +65,7 @@ public class AppTest
     	Money reduced = bank.reduce(sum, "USD");
     	assertEquals(Money.dollar(10), reduced);
     }    
-    
+
     public void testPlusReturnSum() {
     	Money five = Money.dollar(5);
     	Expression result = five.plus(five);
