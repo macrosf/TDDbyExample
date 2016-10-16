@@ -1,7 +1,12 @@
 package testdriven.byexample;
 
+import java.util.Hashtable;
+
 public class Bank {
 
+	private Hashtable<Pair, Integer> rates 
+		= new Hashtable<Pair, Integer>();
+	
 	public Money reduce(Expression source, String to) {
 		//--v1--
 		//return Money.dollar(10);
@@ -24,7 +29,21 @@ public class Bank {
 		//return source.reduce(to);
 		
 		//--v6--
-		return source。reduce(this, to);	//精髓就在这句话了
+		return source.reduce(this, to);	//精髓就在这句话了
 	}
 
+//	int rate(String from, String to) {
+//		return (from.equals("CHF") && to.equals("USD"))
+//				? 2:1;
+//	}
+	
+	//p70
+	void addRate(String from, String to, int rate) {
+		rates.put(new Pair(from, to), rate);
+	}
+	
+	int rate(String from, String to){
+		if (from.equals(to)) return 1;
+		return rates.get(new Pair(from, to));
+	}
 }

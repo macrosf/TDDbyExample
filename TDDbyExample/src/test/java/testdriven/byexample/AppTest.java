@@ -1,5 +1,9 @@
 package testdriven.byexample;
 
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -87,10 +91,38 @@ public class AppTest
     	assertEquals(Money.dollar(1), result);
     }
     
-    public void testReduceDifferentCurrency() {
-    	Bank bank = new Bank();
-    	bank.addRate("CHF", "USD", 2);
-    	Money result = bank.reduce(Money.franc(2), "USD");
-    	assertEquals(Money.dollar(1), result);
+//    public void testReduceDifferentCurrency() {
+//    	Bank bank = new Bank();
+//    	bank.addRate("CHF", "USD", 2);
+//    	Money result = bank.reduce(Money.franc(2), "USD");
+//    	assertEquals(Money.dollar(1), result);
+//    }
+    
+    //P69 assert fail
+//    public void testArrayEquals() {
+//    	assertEquals(new Object[] {"abc"}, new Object[] {"abc"});
+//    }
+    
+    //difference between 
+    //hashmap(non-nullable, thread safe) 
+    //& hashtable(nullable(key/value), not thread safe)
+    public void testHashtableAndHashmap(){
+    	Map<String, String> hashtable = new Hashtable<String, String>();
+    	//hashtable.put(null, "value:A");	//failed (NullpointerException)
+    	//hashtable.put("key:A", null);		//failed (NullpointerException)
+    	hashtable.put("key:B", "value:B");
+    	assertEquals(hashtable.get("key:B"), "value:B");
+    	
+    	Map<String, String> hashmap = new HashMap<String, String>();
+    	hashmap.put(null, "value:A");	
+    	hashmap.put("key:A", null);		
+    	hashmap.put("key:B", "value:B");
+    	assertEquals(hashmap.get(null), "value:A");
+    	assertEquals(hashmap.get("key:A"), null);
+    	assertEquals(hashmap.get("key:B"), "value:B");
+    }
+    
+    public void testIdentityRate() {
+    	assertEquals(1, new Bank().rate("USD", "USD"));
     }
 }
