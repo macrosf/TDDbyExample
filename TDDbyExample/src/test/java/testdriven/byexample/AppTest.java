@@ -125,4 +125,42 @@ public class AppTest
     public void testIdentityRate() {
     	assertEquals(1, new Bank().rate("USD", "USD"));
     }
+    
+    //p72
+    public void testMixedAddition(){
+    	Money fivebucks = Money.dollar(5);
+    	Money tenFrancs = Money.franc(10);
+    	Bank bank = new Bank();
+    	bank.addRate("CHF", "USD", 2);
+    	Money result = bank.reduce(fivebucks.plus(tenFrancs), "USD");
+    	assertEquals(Money.dollar(10), result);
+    }
+    
+    //p76
+    public void testSumPlusMoney(){
+    	Expression fiveBucks = Money.dollar(5);
+    	Expression tenFrancs = Money.franc(10);
+    	Bank bank = new Bank();
+    	bank.addRate("CHF", "USD", 2);
+    	Expression sum = new Sum(fiveBucks, tenFrancs).plus(fiveBucks);
+    	Money result = bank.reduce(sum, "USD");
+    	assertEquals(Money.dollar(15), result);
+    }
+    
+    //p77
+    public void testSumTimes() {
+    	Expression fiveBucks = Money.dollar(5);
+    	Expression tenFrancs = Money.franc(10);
+    	Bank bank = new Bank();
+    	bank.addRate("CHF", "USD", 2);
+    	Expression sum = new Sum(fiveBucks, tenFrancs).times(2);
+    	Money result = bank.reduce(sum, "USD");
+    	assertEquals(Money.dollar(2), result);
+    }
+    
+    //p78
+    public void testPlusSameCurrencyReturnsMoney(){
+    	Expression sum = Money.dollar(1).plus(Money.dollar(1));
+    	assertTrue(sum instanceof Money);
+    }
 }
