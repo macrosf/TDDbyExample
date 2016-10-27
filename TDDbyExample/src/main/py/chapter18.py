@@ -2,7 +2,7 @@ class TestCase:
     """docstring for TestCase"""
     def __init__(self, name):
         self.name = name
-    def setUp()
+    def setUp(self):
         pass
     def run(self):
         self.setUp()
@@ -16,7 +16,7 @@ class WasRun(TestCase):
     def testMethod(self):
         self.wasRun = 1
     def setUp(self):
-        self.setUp = 1
+        self.wasSetUp = 1
 
 class TestCaseTest(TestCase):
     """docstring for TestCaseTest"""
