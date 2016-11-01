@@ -11,7 +11,7 @@ class TestCase:
         self.setUp()
         try:
             method = getattr(self, self.name)
-            method()
+            method(result)
         except:
             result.testFailed()
         self.tearDown()
@@ -30,26 +30,6 @@ class WasRun(TestCase):
         raise Exception
 
 class TestCaseTest(TestCase):
-    # def testSetUp(self):
-    #     test=WasRun("")
-    #     test.setUp()
-    #     assert(test.log == "setUp ")
-
-    # def testTemplateMethod(self):
-    #     test=WasRun("testMethod")
-    #     test.run()
-    #     assert(test.log == "setUp testMethod tearDown ")
-
-    # def testResult(self):
-    #     test  = WasRun("testMethod")
-    #     result = test.run()
-    #     assert("1 run, 0 failed" == result.summery())
-
-    # def testFailedResult(self):
-    #     test = WasRun("brokenMethod")
-    #     result = test.run()
-    #     assert("1 run, 1 failed" == result.summery())
-
     def testSuite(self, result):
         suite = TestSuite()
         suite.add(WasRun("testMethod"))
@@ -57,6 +37,23 @@ class TestCaseTest(TestCase):
         #result = TestResult()
         suite.run(result)
         assert("2 run, 1 failed" == result.summery())
+    # def testSetUp(self):
+    #     test=WasRun("")
+    #     test.setUp()
+    #     assert(test.log == "setUp ")
+    # def testTemplateMethod(self):
+    #     test=WasRun("testMethod")
+    #     test.run()
+    #     assert(test.log == "setUp testMethod tearDown ")
+    # def testResult(self):
+    #     test  = WasRun("testMethod")
+    #     result = test.run()
+    #     assert("1 run, 0 failed" == result.summery())
+    # def testFailedResult(self):
+    #     test = WasRun("brokenMethod")
+    #     result = test.run()
+    #     assert("1 run, 1 failed" == result.summery())
+
 
 class TestResult():
     def __init__(self):
@@ -78,7 +75,7 @@ class TestSuite():
     def add(self, test):
         self.tests.append(test)
     def run(self, result):
-        for test in tests:
+        for test in self.tests:
             test.run(result)
         return result        
 
