@@ -46,3 +46,4 @@ class TestCaseTest(TestCase):
 
 TestCaseTest("testRunning").run();
 TestCaseTest("testSetup").run();
+print("OK")

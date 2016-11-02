@@ -28,12 +28,14 @@ class TestCaseTest(TestCase):
         #print(test.wasRun)
         assert(test.wasRun)
     def testSetup(self):
-        test = wasRun("testMethod")
-        test.run
-        assert(test.wasSetup)
+        test = WasRun("testMethod")
+        test.run()
+        assert(test.wasSetUp)
 
 # test=WasRun("testMethod")
 # print(test.wasRun)
 # test.run()
 # print(test.wasRun)
+TestCaseTest("testSetup").run();
 TestCaseTest("testRunning").run();
+print("OK")
