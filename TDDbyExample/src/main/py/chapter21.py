@@ -26,7 +26,9 @@ class WasRun(TestCase):
         self.log = self.log + "testMethod "
     def tearDown(self):
         self.log = self.log + "tearDown "
-
+    def brokenMethod(self):
+        raise Exception
+    
 class TestResult():
     def __init__(self):
         self.runCount = 0;
@@ -44,5 +46,11 @@ class TestCaseTest(TestCase):
         test  = WasRun("testMethod")
         result = test.run()
         assert("1 run, 0 failed" == result.getSummery())
+    def testFailedResult(self):
+        test = WasRun("brokenMethod")
+        self.result = test.run()
+        #print("**"+self.result.summery())
+        assert("1 run, 1 failed" == self.result.summery())
 
 TestCaseTest("testTemplateMethod").run();
+print("OK")

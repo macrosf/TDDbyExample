@@ -37,3 +37,4 @@ class TestCaseTest(TestCase):
 
 TestCaseTest("testTemplateMethod").run();
 #TestCaseTest("testRunning").run();
+print("OK")
