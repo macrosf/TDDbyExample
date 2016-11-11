@@ -14,6 +14,10 @@ import junit.framework.TestSuite;
 public class AppTest 
     extends TestCase
 {
+	//page 139(chinese version), not work
+//	public static void main(String[] args){
+//		junit.swingui.TestRunner.run(AppTest.class);
+//	}
     /**
      * Create the test case
      *
@@ -163,4 +167,18 @@ public class AppTest
     	Expression sum = Money.dollar(1).plus(Money.dollar(1));
     	assertTrue(sum instanceof Money);
     }
+    
+    //p131 One to Many
+    public void testSum(){
+    	assertEquals("these values should be equal.", 
+    			7, sum(new int[]{3, 4}));
+    }
+
+	private int sum(int[] values) {
+		int sum = 0;
+		for (int v: values){
+			sum+=v;
+		}
+		return sum;
+	}
 }
