@@ -181,4 +181,16 @@ public class AppTest
 		}
 		return sum;
 	}
+	
+	//p151 (chinese version)
+//	public void testSumPrinting() {
+//		Sum sum = new Sum(Money.dollar(5), Money.franc(7));
+//		assertEquals("5 USD + 7 CHF", sum.toString());
+//	}
+	
+	public void testIndentedSumPrinting() {
+		Sum sum = new Sum(Money.dollar(5), Money.franc(7));
+		System.out.println(sum);
+		assertEquals("+\n\t5 USD\n\t7 CHF", sum.toString());
+	}
 }

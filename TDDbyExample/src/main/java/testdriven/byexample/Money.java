@@ -54,4 +54,13 @@ public class Money implements Expression{
 	Expression tims(int multiplier) {
 		return new Money(amount*multiplier, currency);
 	}
+	
+	@Override
+	public String toString(){
+		return String.valueOf(amount) + " " + currency;
+	}
+	
+	public void toString(IndentingWriter writer){
+		writer.print(toString());
+	}
 }
