@@ -193,4 +193,23 @@ public class AppTest
 		System.out.println(sum);
 		assertEquals("+\n\t5 USD\n\t7 CHF", sum.toString());
 	}
+	
+	//page 175 (chinese version)
+	public void testFibonacci(){
+//		assertEquals(0, fib(0));
+//		assertEquals(1, fib(1));
+//		assertEquals(1, fib(2));
+//		assertEquals(2, fib(3));
+
+		int[][] cases = {{0,0}, {1,1}, {2,1}, {3,2}};
+		for (int i=0; i<cases.length; i++) {
+			assertEquals(cases[i][1], fib(cases[i][0]));
+		}
+	}
+
+	private int fib(int i) {
+		if (i==0) return 0;
+		if (i==1) return 1;
+		return fib(i-1)+fib(i-2);
+	}
 }
