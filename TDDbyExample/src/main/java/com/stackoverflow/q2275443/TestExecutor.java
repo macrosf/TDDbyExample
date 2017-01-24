@@ -12,7 +12,6 @@ public class TestExecutor {
 	public static void main(String[] args) throws InterruptedException, ExecutionException{
 		ExecutorService executor = Executors.newSingleThreadExecutor();
 		Future<String> future = executor.submit(new Task());
-		
 		try{
 			System.out.println("started...");
 			System.out.println(future.get(3, TimeUnit.SECONDS));
